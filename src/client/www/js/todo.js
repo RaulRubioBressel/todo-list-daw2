@@ -14,7 +14,9 @@
 	}
 
 	function addTodo(text) {
-		var checked = false;
+		var initDate = new Date(),
+			checked = false,
+			completeDate = undefined;
 		var todo = {
 			getId: (function(myId) {
 				return function() {
@@ -35,12 +37,24 @@
 					throw "Bad state (only true or false are valid values)";
 				} else {
 					checked = myState;
+					if(checked === true){
+						completeDate = new Date();
+					}else{
+						completeDate = undefined;
+					}
 				}
 			},
 			isVisible: isVisible,
 			isDeleted: function() {
 				return false;
+			},
+			getCheckDate: function(){
+				return completeDate;
+			},
+			getInitDate: function(){
+				return initDate;
 			}
+			
 		};
 		todos[id] = todo;
 		numTodos++;

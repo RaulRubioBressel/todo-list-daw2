@@ -18,7 +18,6 @@
 		};
 		div.appendChild(check);
 
-
 		var text = document.createElement("input");
 		text.type = 'text';
 		text.value = todo.getText();
@@ -100,13 +99,12 @@
 
 	TODO_APP.TodoUI = TodoUI;
 
-
 	function modTodo(todo, editor, viewer) {
 		var text = editor.value;
 		TODO_APP.modTodo(todo.getId(), text);
 		viewer.innerHTML = text;
 	}
-
+	
 	function cancelEdition(editor, viewer) {
 		editor.mode = 'view';
 	}
